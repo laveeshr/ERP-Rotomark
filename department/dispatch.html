@@ -1,0 +1,45 @@
+<div id="container" class="" masterType="20">
+    <div class="text-center">
+        <h3>Dispatch</h3>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<table class="table table-hover table-bordered" id="dispatch">
+	        <thead>
+	            <tr>
+	                <th>Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Job Name</th>
+	                <th>Cylinder Length</th>
+	                <th>Cylinder Circum</th>
+	                <th>Quantity</th>
+	                <th>Remarks</th>
+	                <th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	                <!-- <th style="width: 5%;"><button elname="urgentAll" class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'rtid');" urgent="0">Urgent All</button></th> -->
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="dispatchRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="dispatchId" style="text-align: center; display: none;"></td>
+	                <td elname="dispatchJsid"></td>
+	                <td elname="dispatchDate" date="date"></td>
+	                <td elname="dispatchPname"></td>
+	                <td elname='dispatchJname'></td>
+	                <td elname="dispatchLen"></td>
+	                <td elname="dispatchCyCircum"></td>
+	                <td elname="dispatchQuantity"></td>
+	                <td elname="dispatchRemarks"></td>
+	                <td>
+	                	<input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;">
+	                </td>
+	                <!-- <td class="align-center verticalCenter">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent="0"></button>
+					</td> -->
+	            </tr>
+	        </tbody>
+    	</table>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+body {
+  padding-top: 50px;
+}
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  
+  .noPerm {
+  	display : none !important;
+  }
+  
+.not-active {
+   pointer-events: none;
+   cursor: default;
+   opacity : 0.3;
+}
+
+.vertical-inherit * {
+	vertical-align: inherit !important;
+}
+
+.verticalCenter * {
+	vertical-align : middle !important;
+}
+
+.btn .btn-subtle
+{
+	background-color: #dedede !important;
+}
+
+.align-center
+{
+	text-align : center !important;
+}
+
+.boldRow *{
+	font-weight: bold;
+}
+
+.underlineRow *{
+	text-decoration: underline;
+}
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+.table-cell { 
+	display: table-cell !important;
+	padding : 2px;
+	border-left : 1px solid gray;
+	border-bottom : 1px solid gray;
+	vertical-align : middle;
+}
+
+.table-row {
+	display: table-row !important;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+    display: block;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print th , #print td {
+    padding : 2px !important;
+  }
+  #print, #print * {
+    visibility: visible;
+    font-size : 12px !important;
+  }
+  #print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .alertRow {
+  	background-color: #9f9f9f !important;
+  }
+}

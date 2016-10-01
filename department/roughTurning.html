@@ -1,0 +1,44 @@
+<div id="container" class="" masterType="11">
+    <div class="text-center">
+        <h3>Rough Turning</h3>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<table class="table table-hover table-bordered" id="roughTurning">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">ID</th>
+	                <th>Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Cylinder Length</th>
+	                <th>Cylinder Circum</th>
+	                <th>Final Size</th>
+	                <th>Operator</th>
+	                <th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	                <th style="width: 5%;"><button elname="urgentAll" class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'rtid');" urgent="0">Urgent All</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="roughTurningRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="rtid" style="text-align: center"></td>
+	                <td elname="rtjsid"></td>
+	                <td elname="rtDate" date="date"></td>
+	                <td elname="rtPname"></td>
+	                <td elname="rLen"></td>
+	                <td elname="rtCyCircum"></td>
+	                <td elname="rtFinal"></td>
+	                <td elname="rtOperator">
+	                	<input type="text" class="form-control" placeholder="Enter Operator Name" elname="opId" ac="5" onfocus="AutoCompleteUtil.loadData(this, 'submitRow');" required>
+	                </td>
+	                <td><input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;" disabled></td>
+	                <td class="align-center verticalCenter">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent="0"></button>
+					</td>
+	            </tr>
+	        </tbody>
+    	</table>
+    </div>
+</div>

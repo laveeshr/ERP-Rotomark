@@ -1,0 +1,51 @@
+<div id="container" class="color" masterType="2">
+    <div class="page-header text-center">
+        <h1>Color Master</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.COLORMASTER);">Add Color</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="colorMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Color ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Remarks</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="colorMasterRow" style="display: none;" keep='true'>
+                <td elname="cid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="cname"></td>
+                <td elname="ctype"></td>
+                <td elname="cremarks"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px;width: 15px; "></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="colorMasterAddRow" style="display: none;" title="Add new Color">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="cid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Color Name</td>
+                <td><input type="text" class="form-control" placeholder="Color Name" elname="cname" required></td>
+            </tr>
+            <tr>
+                <td>Color Type</td>
+                <td><input type="text" class="form-control" placeholder="Color Type" elname="ctype" required></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><textarea rows="2" placeholder="Remarks" class="form-control" elname="cremarks"></textarea></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+<!--    <p class='bg-danger' id="noRow" style="display: none; height: 5%;">No Entries yet! Please enter some data!</p>-->
+</div>

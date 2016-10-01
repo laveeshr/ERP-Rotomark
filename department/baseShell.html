@@ -1,0 +1,83 @@
+<div id="container" class="" masterType="10">
+	<script>
+		GeneralUtil.setDateRange(document.getElementById('fromEl'), document.getElementById('toEl'));
+	</script>
+    <div class="text-center" style="margin: 15px 0px 15px 0px;">
+        <div class="btn-group btn-group-lg">
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/tikalSize.html', Constants.TIKAL_SIZE);">Tikal Size</button>
+		    <button type="button" class="btn btn-active">Base Shell</button>
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/sheetCutting.html', Constants.SHEET_CUTTING);">Sheet Cutting</button>
+		 </div>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="submitBS">Submit</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<div>
+	    	<label for="from">From : </label>
+			<input type="text" id="fromEl" name="from">
+			<label for="to">To : </label>
+			<input type="text" id="toEl" name="to">
+			<button class="btn btn-warning" onclick="GeneralUtil.resetDateRange(true)">Reset Date</button>
+			<button class="button btn-default glyphicon glyphicon-refresh" aria-hidden="true" elname="refresh" onclick="LoadUtil.refreshView();" style="margin-left: 5px;"></button>
+		</div>
+		<br>
+    	<table class="table table-hover table-bordered" id="baseShell">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Length</th>
+	                <th>Circum</th>
+	                <th>Pieces</th>
+	                <th>Final Size</th>
+	                <th>Bore Details</th>
+	                <th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	                <th style="width: 5%;"><button class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'baseShellId');" urgent='0' elname="urgentAll">Urgent All</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="baseShellRow" style="display: none;" keep='true' class="verticalCenter">
+	            	<td elname='baseShellId' style="display: none;"></td>
+	                <td elname="bsid" class="not-active"  onclick="MasterUtil.fetchRowData(this);" style="text-align: center"></td>	<!-- this is actually the order ID -->
+	                <td elname="bsdate" date="date"></td>
+	                <td elname="bsPname"></td>
+	                <td elname="bslen"></td>
+	                <td elname="bsCyCircum"></td>
+	                <td elname="bsPieces"></td>
+	                <td elname="bsFinalSize"></td>
+	                <td elname="bsBore"></td>
+	                <td><input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;"></td>
+	                <td class="align-center">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent='0'></button>
+					</td>
+	            </tr>
+	        </tbody>
+    	</table>
+    	<div id="bsSpareCyTable" style="display: none;" title="Check Spare Cylinder">
+	        <table class="table table-bordered vertical-inherit">
+	            <thead>
+		            <tr>
+		                <th style="width: 10%;">Cylinder ID</th>
+		                <th>Cylinder Length</th>
+		                <th>Cylinder Circum</th>
+		                <th>No of Pieces</th>
+		                <th>Place</th>
+		                <th>Remarks</th>
+		            </tr>
+		        </thead>
+		        <tbody style="max-height: 60%; overflow: auto;">
+		            <tr elname="bsSpareCyRow" style="display: none;" keep='true'>
+		                <td elname="bsscid"  onclick="MasterUtil.fetchRowData(this);" style="text-align: center"></td>
+		                <td elname="bssclen"></td>
+		                <td elname="bssccir"></td>
+		                <td><input type="number" elname="bsscpieces" class="form-control" placeholder="# Pieces" min="0"></td>
+		                <td elname="bsscplace"></td>
+		                <td elname="bsscremarks"></td>
+		            </tr>
+		        </tbody>
+	        </table>
+    	</div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div id="container" class="" masterType="131">
+    <div class="text-center" style="margin: 15px 0px 15px 0px;">
+        <div class="btn-group btn-group-lg">
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/copperPlating.html', Constants.COPPER_PLATING);">Copper Plating</button>
+		    <button type="button" class="btn btn-active">Copper Tank Wise</button>
+		 </div>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <hr>
+    <div>
+    	<div id="copperTankWise">
+	    	<ul>
+	    		<li style="display: none;" elname="copperTankRowHead" keep="true"><a></a></li>
+	    	</ul>
+	    	<div elname="copperTankRowBody" style="display: none;" keep="true">
+	    		<table class="table table-bordered table-hover">
+	    			<thead>
+	    				<tr>
+	    					<th>Shaft</th>
+		    				<th>Average Layer</th>
+		    				<th>Layer Time</th>
+		    				<th>Given Amp</th>
+		    				<th>Total Amp</th>
+		    				<th>Volt</th>
+		    				<th>Tank Temp</th>
+		    				<th>Dozing 401</th>
+		    				<th>Dozing 402</th>
+		    				<th>Dozing H2SO4</th>
+		    				<th>Time In</th>
+		    				<th>Time Out</th>
+		    				<th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	    				</tr>
+	    			</thead>
+	    			<tbody>
+	    				<tr id="ctShaftRow" elname='ctShaftRow' style="display: none;" keep="true">
+	    					<td elname="ctShaft" onclick="MasterUtil.fetchRowData(this, this.getAttribute('tankId'));" style="cursor: pointer;color : #428bca;text-align: center"></td>
+	    					<td elname="ctAvgLayer"></td>
+	    					<td elname="ctLayerTime"></td>
+	    					<td elname="ctGivenAmp"></td>
+	    					<td elname="ctTotalAmp"></td>
+	    					<td elname="ctVolt">
+	    						<input class="form-control" type="number" step="0.01" elname='ctVoltVal' required/>
+	    					</td>
+	    					<td elname="ctTankTemp">
+	    						<input class="form-control" type="number" step="0.01" elname='ctTankTempVal' required/>
+	    					</td>
+	    					<td elname="ctDozing401">
+	    						<input type="number" class="form-control" step="0.01" elname='ctDoz401Val' required/>
+	    					</td>
+	    					<td elname="ctDozing402">
+	    						<input type="number" class="form-control" step="0.01" elname='ctDoz402Val' required/>
+	    					</td>
+	    					<td elname="ctDozingH2SO4">
+	    						<input type="number" class="form-control" step="0.01" elname='ctDozH2SO4Val' required/>
+	    					</td>
+	    					<td elname="ctTimeIn">
+	    						<input type="time" class="form-control" elname='ctTimeInVal' required/>
+	    					</td>
+	    					<td elname="ctTimeOut">
+	    						<input type="time" class="form-control" elname='ctTimeOutVal' required/>
+	    					</td>
+	    					 <td>
+			                	<input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;">
+			                </td>
+	    				</tr>
+	    				<tr onclick="DepartmentUtil.addNewShaft('ctShaftRow', this);" keep="true" elname="ctAddShaft">
+			            	<td colspan="13">+ Add Shaft</td>
+			            </tr>
+	    			</tbody>
+	    		</table>
+	    	</div>
+	    </div>
+    	<div id="copperTankShaft" style="display: none;" title="Copper Tank Shafts">
+    		<div class="row">
+    			<div style="display: inline-block;">Tank ID : </div>
+    			<div elname="ctTankId" style="display: inline-block;"></div>
+    		</div>
+    		<div class="row">
+    			<div style="display: inline-block;">Shaft ID : </div>
+    			<div elname='ctShaftId' style="display: inline-block;"></div>
+    		</div>
+    		<table class="table table-bordered table-condensed">
+    			<thead>
+    				<tr>
+    					<th>Cylinder</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr id="ctCylinders" elname="ctCylinders" style="display: none;" keep="true">
+    					<td elname='cylinderSpecs'><select class='form-control' elname='cySpecs' onchange="DepartmentUtil.filterSelectData(this, 'cySpecs');">
+    						<option selected disabled>Select Cylinder</option>
+    					</select></td>
+    				</tr>
+    				<tr onclick="GeneralUtil.addNewRow('ctCylinders', this, null, true);" keep="true" elname='ctAddCy'>
+    					<td>+ Add Cylinder</td>
+    				</tr>
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+</div>

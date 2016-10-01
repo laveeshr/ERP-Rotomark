@@ -1,0 +1,81 @@
+<div id="container" class="" masterType="16">
+    <div class="text-center">
+        <h3>Engraving</h3>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<table class="table table-hover table-bordered" id="engraving">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">ID</th>
+	                <th>Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Cylinder Length</th>
+	                <th>Cylinder Circum</th>
+	                <th>Sq Inch</th>
+	                <th>Polisher</th>
+	                <th>Tank No</th>
+	                <th>Color</th>
+	                <th>Time</th>
+	                <th>Stylus</th>
+	                <th>Machine No</th>
+	                <th>Hardness</th>
+	                <th>Operator</th>
+	                <th>Re-Process</th>
+	                <th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	                <th style="width: 5%;"><button elname="urgentAll" class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'rtid');" urgent="0">Urgent All</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="engravingRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="egid" style="text-align: center"></td>
+	                <td elname="egjsid"></td>
+	                <td elname="egDate" date="date"></td>
+	                <td elname="egPname"></td>
+	                <td elname="egLen"></td>
+	                <td elname="egCyCircum"></td>
+	                <td elname="egSqInch"></td>
+	                <td elname="egPolisher"></td>
+	                <td elname='egTankNo'></td>
+	                <td elname="egColorName">
+						<input type="text" class="form-control" placeholder="Enter Color" elname="egColor" ac="2" onfocus="AutoCompleteUtil.loadData(this);" required>
+					</td>
+	                <td elname="egTimeEl">
+	                	<input type="number" step="0.01" class="form-control" elname='egTime' placeholder="Time" />
+	                </td>
+	                <td elname="egStylusEl">
+	                	<input type="number" class="form-control" elname='egStylus' placeholder="Stylus" />
+	                </td>
+	                <td elname="egMachineNoEl">
+	                	<input type="number" class="form-control" elname='egMachineNo' placeholder="Machine No"/>
+	                </td>
+	                <td elname="egHardnessEl">
+						<input type="number" class="form-control" placeholder="Enter Hardness" elname="egHardness" required>
+					</td>
+	                <td elname="egOperator">
+	                	<input type="text" class="form-control" placeholder="Enter Operator Name" elname="opId" ac="5" onfocus="AutoCompleteUtil.loadData(this, 'submitRow');" required>
+	                </td>
+	                <td>
+	                	<select elname="reProcess" class="form-control">
+                            <option selected disabled>Select Process</option>
+                            <option value="11">Rough Turning</option>
+                            <option value="12">Final Grinding</option>
+                            <option value="13">Copper Plating</option>
+                            <option value="14">Copper Cut</option>
+                            <option value="15">Copper Polish</option>
+                         </select>
+	                </td>
+	                <td>
+	                	<input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;" disabled>
+	                </td>
+	                <td class="align-center verticalCenter">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent="0"></button>
+					</td>
+	            </tr>
+	        </tbody>
+    	</table>
+    </div>
+</div>

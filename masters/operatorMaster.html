@@ -1,0 +1,39 @@
+<div id="container" class="operator" masterType="5">
+    <div class="page-header text-center">
+        <h1>Operator Master</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.OPMASTER);">Add Operator</button>
+    <button class="btn btn-danger" id="delete" onclick="MasterUtil.deleteMasterRows()">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="opMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Opearator ID</th>
+                <th>Type</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="opMasterRow" style="display: none;" keep='true'>
+                <td elname="opid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="opname"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="opMasterAddRow" style="display: none;" title="Add new Operator">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="opid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Operator Name</td>
+                <td><input type="text" class="form-control" placeholder="Operator Name" elname="opname" required></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+<!--    <p class='bg-danger' id="noRow" style="display: none; height: 5%;">No Entries yet! Please enter some data!</p>-->
+</div>

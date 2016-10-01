@@ -1,0 +1,51 @@
+<div id="container" class="material" masterType="3">
+    <div class="page-header text-center">
+        <h1>Material Master</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.MATERIALMASTER);">Add Material</button>
+    <button class="btn btn-danger" id="delete" onclick="MasterUtil.deleteMasterRows()">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="materialMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Material ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Remarks</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="materialMasterRow" style="display: none;" keep='true'>
+                <td elname="mid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="mname"></td>
+                <td elname="mtype"></td>
+                <td elname="mremarks"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="materialMasterAddRow" style="display: none;" title="Add new Material">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="mid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Material Name</td>
+                <td><input type="text" class="form-control" placeholder="Material Name" elname="mname" required></td>
+            </tr>
+            <tr>
+                <td>Material Type</td>
+                <td><input type="text" class="form-control" placeholder="Material Type" elname="mtype" required></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><textarea rows="2" placeholder="Remarks" class="form-control" elname="mremarks"></textarea></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+<!--    <p class='bg-danger' id="noRow" style="display: none; height: 5%;">No Entries yet! Please enter some data!</p>-->
+</div>

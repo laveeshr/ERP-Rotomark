@@ -1,0 +1,17 @@
+Error: Invalid DB Connection!
+#0 {main}Error: Invalid DB Connection!#0 {main}Error: Invalid DB Connection!#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(3): include_once()
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/fetchdata.php(2): include('/Users/laveeshr...')
+#2 {main}Error: Invalid DB Connection!#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(3): include_once()
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/fetchdata.php(2): include('/Users/laveeshr...')
+#2 {main}Error: Invalid DB Connection!#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(3): include_once()
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/fetchdata.php(2): include('/Users/laveeshr...')
+#2 {main}Error: Invalid DB Connection!#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(3): include_once()
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/fetchdata.php(2): include('/Users/laveeshr...')
+#2 {main}Error: Access denied for user 'root'@'localhost' (using password: NO)#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(3): include_once()
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/fetchdata.php(2): include('/Users/laveeshr...')
+#2 {main}Error: Call to undefined function aray()#0 {main}Error: Call to undefined function aray()#0 {main}Error: Call to a member function close() on boolean#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(21): clearDb(true)
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/addMasterData.php(80): executeQuery('CALL deptInput(...', false, false, true)
+#2 {main}Error: Call to a member function close() on boolean#0 /Users/laveeshrohra/Documents/Workspace/roto/php/GeneralUtil.php(21): clearDb(true)
+#1 /Users/laveeshrohra/Documents/Workspace/roto/php/addMasterData.php(80): executeQuery('CALL deptInput(...', false, false, true)
+#2 {main}Error: Call to a member function close() on boolean#0 /Users/laveeshrohra/Documents/Workspace/roto/php/addMasterData.php(80): executeQuery('CALL deptInput(...', false, false, true)
+#1 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Cannot use object of type stdClass as array#0 {main}Error: Call to undefined function push()#0 {main}Error: Call to undefined function push()#0 {main}Error: Call to undefined function push()#0 {main}Error: Call to undefined function push()#0 {main}Error: Call to undefined function push()#0 {main}

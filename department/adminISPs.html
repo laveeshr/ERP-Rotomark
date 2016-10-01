@@ -1,0 +1,47 @@
+<div id="container" class="process" masterType="24">
+    <div class="page-header text-center">
+        <h1>Admin Page</h1>
+        <div class="btn-group">
+			    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/adminPage.html', Constants.ADMIN);">Users</button>
+			    <button type="button" class="btn btn-active">ISPs</button>
+		</div>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.ISP);">Add ISP</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete ISP</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="ispTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">ISP ID</th>
+                <th>Area Name</th>
+                <th>ISP Address</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="ispRow" style="display: none;" keep='true'>
+                <td elname="ispid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: center"></td>
+                <td elname="ispname"></td>
+                <td elname="isp"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="ispAddRow" style="display: none;" title="Add new ISP">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="ispid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Area Name</td>
+                <td><input type="text" class="form-control" placeholder="Area Name" elname="ispname" required></td>
+            </tr>
+            <tr>
+                <td>ISP Address</td>
+                <td><input type="text" class="form-control" placeholder="ISP Address" elname="isp" required></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>

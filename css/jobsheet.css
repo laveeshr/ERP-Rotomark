@@ -1,0 +1,39 @@
+.jobsheet .table-inline
+{
+    width: auto !important;
+    display: table-cell;
+}
+
+.jobsheet th, .jobsheet td
+{
+    text-align: center !important;
+}
+
+.jobsheet .oneWidth
+{
+    width: 1px !important;
+}
+
+.jobsheet .verticalCenter *
+{
+    vertical-align: middle;
+    vertical-align: -moz-middle-with-baseline;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.bg-danger
+{
+    background-color:#f2dede;
+}
+
+.process th
+{
+    text-align: center;
+}
+
+.paddingTop {
+    padding-top: 15px;
+}   
+.paddingBottom {
+    padding-bottom: 15px;
+}

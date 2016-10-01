@@ -1,0 +1,81 @@
+<div id="container" class="" masterType="21">
+	<script>
+		GeneralUtil.setDateRange(document.getElementById('fromEl'), document.getElementById('toEl'));
+	</script>
+    <div class="text-center" style="margin: 15px 0px 15px 0px;">
+        <div class="btn-group btn-group-lg">
+		    <button type="button" class="btn btn-active">Tikal Size</button>
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/baseShell.html', Constants.BASE_SHELL);">Base Shell</button>
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/sheetCutting.html', Constants.SHEET_CUTTING);">Sheet Cutting</button>
+		 </div>
+    </div>
+    <button class="btn btn-info" onclick="LoadUtil.getPrintData(this)" id='printTikalSize'>Print</button>
+    <hr>
+    <div>
+    	<label for="from">From : </label>
+		<input type="text" id="fromEl" name="from">
+		<label for="to">To : </label>
+		<input type="text" id="toEl" name="to">
+		<button class="btn btn-warning" onclick="GeneralUtil.resetDateRange(true)">Reset Date</button>
+		<button class="button btn-default glyphicon glyphicon-refresh" aria-hidden="true" elname="refresh" onclick="LoadUtil.refreshView();" style="margin-left: 5px;"></button>
+	</div>
+	<br>
+    <div>
+    	<table class="table table-hover table-bordered" id="tikalSize">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Tikal Size</th>
+	                <th>Pieces</th>
+	                <th>Bore</th>
+	                <th>Cylinder Circum</th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="tikalSizeRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="tsJsId" style="text-align: center"></td>
+	                <td elname="tsDate" date="date"></td>
+	                <td elname="tsPname"></td>
+	                <td elname="tsSize"></td>
+	                <td elname="tsPieces"></td>
+	                <td elname="tsBore"></td>
+	                <td elname="tsCircum"></td>
+	            </tr>
+	        </tbody>
+    	</table>
+    </div>
+    <div id="print" style="display: none;">
+    	<h3 elname='printTitle' class="text-center"></h3>
+    	<div class="row" style="display: none; margin-left: 15px;">
+    		<strong class="text-left">From : </strong>
+    		<span elname="dateFrom"></span>
+    		<strong class="text-right"> To : </strong>
+    		<span elname="dateTo"></span>
+    	</div>
+    	<table class="table table-bordered table-condensed">
+    		<thead>
+    			<tr>
+    				    				<!-- <th>Job ID</th> -->
+    				<th style="width : 12%;">Date</th>
+	                <th style="width : 30%;">Party Name</th>
+	                <th>Tikal Size</th>
+	                <th>Pieces</th>
+	                <th>Bore</th>
+	                <th>Circum</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr elname='printRow' style="display: none;">
+    				<td elname="tsDate" date="date"></td>
+	                <td elname="tsPname"></td>
+	                <td elname="tsSize"></td>
+	                <td elname="tsPieces"></td>
+	                <td elname="tsBore"></td>
+	                <td elname="tsCircum"></td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div id="container" class="process" masterType="23">
+    <div class="page-header text-center">
+        <h1>Admin Page</h1>
+        <div class="btn-group">
+			    <button type="button" class="btn btn-active">Users</button>
+			    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/adminISPs.html', Constants.ISP);">ISPs</button>
+		</div>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.ADMIN);">Add User</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete User</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="usersTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">User ID</th>
+                <th>Name</th>
+                <th>Admin</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="usersRow" style="display: none;" keep='true'>
+                <td elname="uid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="uname"></td>
+                <td elname="uadmin" booleanPrint="true"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="usersAddRow" style="display: none;" title="Add new User">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="uid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>User Name</td>
+                <td><input type="text" class="form-control" placeholder="User Name" elname="uname" required></td>
+            </tr>
+            <tr>
+                <td>Update Password</td>
+                <td><input type="password" class="form-control" placeholder="(Unchanged)" elname="upass" ignoreEl="true"></td>
+            </tr>
+            <tr>
+                <td>Admin</td>
+                <td>
+                	<div class="radio-inline">
+                        <label><input type="radio" class="form-control" elname="uadmin" value="1" required style="height: 13px; width: 13px;" onchange="GeneralUtil.enableDisableEl(this, 'userPermEl', 'td', true);">Yes</label>
+                    </div>
+                    <div class="radio-inline">
+                        <label><input type="radio" elname="uadmin" class="form-control" value="0" required checked="checked" style="height: 13px; width: 13px;" onchange="GeneralUtil.enableDisableEl(this, 'userPermEl', 'td', true);">No</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Permissions</td>
+                <td class="form-group" elname='userPermEl'>
+                	<table class="table">
+                		<tr elname='userPermRow' id='userPermRow' style="margin: 2px; display: none;" keep="true">
+                			<td>
+                				<select class="form-control"elname="userPerm" required>
+			                		<option checked>Select Permissions</option>
+			                		<option value="25">Masters</option>
+			                		<option value="9">Jobsheet</option>
+			                		<option value="10">Base Shell</option>
+			                		<option value="11">Rough Turning</option>
+			                		<option value="12">Final Grinding</option>
+			                		<option value="13">Copper Plating</option>
+			                		<option value="14">Copper Cut</option>
+			                		<option value="15">Copper Polish</option>
+			                		<option value="16">Engraving</option>
+			                		<option value="17">Chrome Plating</option>
+			                		<option value="18">Chrome Polish</option>
+			                		<option value="19">Proofing</option>
+			                		<option value="20">Dispatch</option>
+			                	</select>
+                			</td>
+                			<td>
+                				<button type="button" class="btn btn-default" onclick="GeneralUtil.deleteEl(this, 'userPermRow');">
+								  <span class="glyphicon glyphicon-trash"></span>
+								</button>
+                			</td>
+                		</tr>
+                		<tr onclick="GeneralUtil.addNewRow('userPermRow', this);" elname='addMorePerm'>
+                			<td colspan="2"><a href="#">+ Add Permissions</a></td>
+                		</tr>
+                	</table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>

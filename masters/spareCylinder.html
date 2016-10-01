@@ -1,0 +1,62 @@
+<div id="container" class="spare" masterType="6">
+    <div class="page-header text-center">
+        <h1>Spare Cylinders</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.SPARECYLINDER);">Add Cylinder</button>
+    <button class="btn btn-danger" id="delete" onclick="MasterUtil.deleteMasterRows()">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="cylinderMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Cylinder ID</th>
+                <th>Cylinder Length</th>
+                <th>Cylinder Circum</th>
+                <th>No of Pieces</th>
+                <th>Place</th>
+                <th>Remarks</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="cylinderMasterRow" style="display: none;" keep='true'>
+                <td elname="scid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="sclen"></td>
+                <td elname="sccir"></td>
+                <td elname="scpieces"></td>
+                <td elname="scplace"></td>
+                <td elname="scremarks"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="cylinderMasterAddRow" style="display: none;" title="Add new Cylinder">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="number" step="0.01" elname="scid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Length</td>
+                <td><input type="number" step="0.01" class="form-control" placeholder="Length" elname="sclen" required></td>
+            </tr>
+            <tr>
+                <td>Circum</td>
+                <td><input type="number" step="0.01" class="form-control" placeholder="Circum" elname="sccir" required></td>
+            </tr>
+            <tr>
+                <td>No of Pieces</td>
+                <td><input type="number" class="form-control" placeholder="# Pieces" elname="scpieces" required></td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td><input type="text" class="form-control" placeholder="Place" elname="scplace" required></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><textarea rows="2" placeholder="Remarks" class="form-control" elname="scremarks"></textarea></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>

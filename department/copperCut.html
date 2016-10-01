@@ -1,0 +1,62 @@
+<div id="container" class="" masterType="14">
+    <div class="text-center">
+        <h3>Copper Cut</h3>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<table class="table table-hover table-bordered" id="copperCut">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">ID</th>
+	                <th>Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Cylinder Length</th>
+	                <th>Cylinder Circum</th>
+	                <th>Final Size</th>
+	                <th>Tank Number</th>
+	                <th>Operator</th>
+	                <th>Re-Process</th>
+	                <th style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>Complete All</button></th>
+	                <th style="width: 5%;"><button elname="urgentAll" class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'rtid');" urgent="0">Urgent All</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="copperCutRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="ccid" style="text-align: center"></td>
+	                <td elname="ccjsid"></td>
+	                <td elname="ccDate" date="date"></td>
+	                <td elname="ccPname"></td>
+	                <td elname="ccLen"></td>
+	                <td elname="ccCyCircum"></td>
+	                <td elname="ccFinal"></td>
+	                <td elname="ccTank"></td>
+	                <td elname="ccOperator">
+	                	<input type="text" class="form-control" placeholder="Enter Operator Name" elname="opId" ac="5" onfocus="AutoCompleteUtil.loadData(this, 'radioSubmitRow');" required>
+	                </td>
+	                <td>
+	                	<select elname="reProcess" class="form-control">
+                            <option selected disabled>Select Process</option>
+                            <option value="11">Rough Turning</option>
+                            <option value="12">Final Grinding</option>
+                            <option value="13">Copper Plating</option>
+                         </select>
+	                </td>
+	                <td><input type="checkbox" class="form-control" elname="submitRow" style="display: none;" disabled>
+	                	<label class="radio-inline">
+						  <input type="radio" name="ccSubmitRow" elname='radioSubmitRow' id="inlineRadio1" value="14" disabled onclick="DepartmentUtil.checkRow(this, 'submitRow');"> Cut
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="ccSubmitRow" elname='radioSubmitRow' id="inlineRadio2" value="141" disabled onclick="DepartmentUtil.checkRow(this, 'submitRow');"> Design
+						</label>
+	                </td>
+	                <td class="align-center verticalCenter">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent="0"></button>
+					</td>
+	            </tr>
+	        </tbody>
+    	</table>
+    </div>
+</div>

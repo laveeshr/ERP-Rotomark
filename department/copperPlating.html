@@ -1,0 +1,84 @@
+<div id="container" class="" masterType="13">
+    <div class="text-center" style="margin: 15px 0px 15px 0px;">
+        <div class="btn-group btn-group-lg">
+        	<h3>Copper Plating</h3>
+		    <!-- <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/tikalSize.html', Constants.TIKAL_SIZE);">Tikal Size</button> -->
+		    <!-- <button type="button" class="btn btn-active">Copper Plating</button> -->
+		    <!-- <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/copperTankWise.html', Constants.COPPER_TANK);">Copper Tank Wise</button> -->
+		 </div>
+    </div>
+    <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="completeDept">Submit</button>
+    <button type="button" class="btn btn-info" onclick="MasterUtil.fetchRowData(this, 1001);">Defaults</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<table class="table table-hover table-bordered" id="copperPlating">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">ID</th>
+	                <th>Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Cylinder Length</th>
+	                <th>Cylinder Circum</th>
+	                <th>Final Size</th>
+	                <th>B.S. Final Size</th>
+	                <th>B.S. Actual Size</th>
+	                <th>Copper Plating Size</th>
+	                <th>Copper Layer</th>
+	                <th>Time</th>
+	                <th>Ampere</th>
+	                <th>Total Ampere</th>
+	                <th>Copper Weight</th>
+	                <th>Tank No</th>
+	                <th>Re-Process</th>
+	                <th class="" style="width: 5%;"><button class="btn btn-success" onclick="GeneralUtil.checkAll(this, 'table', 'submitRow');" checked='false'>M.A.</button></th>
+	                <th class="" style="width: 5%;"><button elname="urgentAll" class="btn btn-warning" onclick="DepartmentUtil.markUrgent(this, 'cpid');" urgent="0">U.A.</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="copperPlatingRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="cpid" style="text-align: center"></td>
+	                <td elname="cpjsid"></td>
+	                <td elname="cpDate" date="date"></td>
+	                <td elname="cpPname"></td>
+	                <td elname="cpLen"></td>
+	                <td elname="cpCyCircum"></td>
+	                <td elname="cpFinal"></td>
+	                <td elname="cpBsFinal"></td>
+	                <td elname="cpBsAct"><input type="number" step="0.01" style="min-width: 70px;" class="form-control" elname="cpBsActual" placeholder="BS Actual" onfocusout="DepartmentUtil.calculateCopperPlatingDetails(this);" required/></td>
+	                <td elname="cpSize"></td>
+	                <td elname="cpLayer"></td>
+	                <td elname="cpTime"></td>
+	                <td elname="cpAmp"></td>
+	                <td elname="cpTotalAmp"></td>
+	                <td elname="cpWeight"></td>
+	                <td elname="cpTank"><input type="number" style="min-width: 60px;" class="form-control" elname="cpTankNo" placeholder="Tank No" required/></td>
+	                <td>
+	                	<select elname="reProcess" class="form-control">
+                            <option selected disabled>Select Process</option>
+                            <option value="11">Rough Turning</option>
+                            <option value="12">Final Grinding</option>
+                         </select>
+	                </td>
+	                <td><input type="checkbox" class="form-control" elname="submitRow" style="height: 15px;width: 15px;"></td>
+	                <td class="align-center">
+					  <button class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" elname="urgentRow" onclick="DepartmentUtil.markUrgent(this);" urgent="0"></button>
+					</td>
+	            </tr>
+	        </tbody>
+    	</table>
+    	<div id="copperPlatingDefault" style="display: none;" title="Copper Plating Defaults">
+    		<table class="table table-bordered">
+    			<tr>
+	                <td>Ampere</td>
+	                <td><input type="number" elname="cpAmp" class="form-control" required></td>
+	            </tr>
+	            <tr>
+	                <td>Ampere Current Density</td>
+	                <td><input type="number" class="form-control" placeholder="Current Density" elname="cpAmpCd" required></td>
+	            </tr>
+    		</table>
+    	</div>
+    </div>
+</div>

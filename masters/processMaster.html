@@ -1,0 +1,64 @@
+<div id="container" class="process" masterType="1">
+    <div class="page-header text-center">
+        <h1>Process Master</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.PROCESSMASTER);">Add Process</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="processMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Process ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Remarks</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="processMasterRow" style="display: none;" keep='true'>
+                <td elname="pid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="pname"></td>
+                <td elname="ptype" stateType="true"></td>
+                <td elname="premarks"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px; width: 15px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="processMasterAddRow" style="display: none;" title="Add new Process">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="pid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Process Name</td>
+                <td><input type="text" class="form-control" placeholder="Process Name" elname="pname" required></td>
+            </tr>
+            <tr>
+                <td>Process Type</td>
+                <td class="form-group">
+                	<select class="form-control"elname="ptype" required>
+                		<option value="10" checked>Base Shell</option>
+                		<option value="11">Rough Turning</option>
+                		<option value="12">Final Grinding</option>
+                		<option value="13">Copper Plating</option>
+                		<option value="14">Copper Cut</option>
+                		<option value="15">Copper Polish</option>
+                		<option value="16">Engraving</option>
+                		<option value="17">Chrome Plating</option>
+                		<option value="18">Chrome Polish</option>
+                		<option value="19">Proofing</option>
+                		<option value="20">Dispatch</option>
+                	</select>
+                </td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><textarea rows="2" placeholder="Remarks" class="form-control" elname="premarks"></textarea></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>

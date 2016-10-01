@@ -1,0 +1,99 @@
+<div id="container" class="party" masterType="8">
+    <div class="page-header text-center">
+        <h1>Party Master</h1>
+    </div>
+    <button class="btn btn-primary" onclick="MasterUtil.addMasterRow(Constants.PARTYMASTER);">Add Party</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button>
+    <hr>
+    <table class="table table-hover table-bordered" id="partyMasterTable">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Party ID</th>
+                <th>Name</th>
+                <th>Outstation</th>
+                <th>Bore Details</th>
+                <th style="width: 5%;"><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+            </tr>
+        </thead>
+        <tbody style="max-height: 60%; overflow: auto;">
+            <tr id="partyMasterRow" style="display: none;" keep='true'>
+                <td elname="pid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: 
+                    center"></td>
+                <td elname="pname"></td>
+                <td elname="pout"></td>
+                <td elname="pbore"></td>
+                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px;width: 15px; "></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="partyMasterAddRow" style="display: none;" title="Add new Party">
+        <table class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" elname="pid" class="form-control" disabled></td>
+            </tr>
+            <tr>
+                <td>Party Name</td>
+                <td><input type="text" class="form-control" placeholder="Party Name" elname="pname" required></td>
+            </tr>
+            <tr>
+                <td>Outstation</td>
+                <td>
+                    <div class="radio-inline">
+                        <label><input type="radio" class="form-control" elname="pout" value="Yes" required style="height: 13px; width: 13px;">Yes</label>
+                    </div>
+                    <div class="radio-inline">
+                        <label><input type="radio" elname="pout" class="form-control" value="No" required checked="checked" style="height: 13px; width: 13px;">No</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Bore</td>
+                <td><input type="text" class="form-control" placeholder="Bore Details" elname="pbore" required></td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-md-3">Process Type</th>
+                    <th>Process Name</th>
+                    <th class="col-md-2">Rate</th>
+                    <th class="col-md-3">Rate Type</th>
+                    <th class="col-md-1">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="pmProcessRow" style="display: none;" keep='true' elname='pmProcessRow'>
+                    <td>
+                        <select elname="pmProcessType" class="form-control" onchange="AutoCompleteUtil.changeTagValueBasedOnSelect(this, 'pmProcessName', 'pmProcessName');">
+                            <option value="1" selected>Process</option>
+                            <option value="4">Less</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" elname="pmProcessName" class="form-control" ac='1' onfocus="AutoCompleteUtil.loadData(this);" required>
+                    </td>
+                    <td>
+                        <input type="number" step="0.01" elname="pmProcessRate" min="0" class="form-control" required>
+                    </td>
+                    <td>
+                        <select elname="pmProcessRateType" class="form-control">
+                            <option value="sqinch" selected>Square Inch</option>
+                            <option value="sqmm">Square MM</option>
+                            <option value="sqcm">Square CM</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="GeneralUtil.deleteEl(this, 'pmProcessRow');">Delete</button>
+                    <!-- </div> -->
+                    </td>
+                </tr>
+                <tr elname="pmAddProcessRow" onclick="MasterUtil.addPartyMasterProcessRow(this);">
+                    <td colspan="5"><a href="#">+ Add Row</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+<!--    <p class='bg-danger' id="noRow" style="display: none; height: 5%;">No Entries yet! Please enter some data!</p>-->
+</div>

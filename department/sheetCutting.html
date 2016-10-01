@@ -1,0 +1,124 @@
+<div id="container" class="" masterType="22">
+	<script>
+		GeneralUtil.setDateRange(document.getElementById('fromEl'), document.getElementById('toEl'));
+	</script>
+    <div class="text-center" style="margin: 15px 0px 15px 0px;">
+        <div class="btn-group btn-group-lg">
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/tikalSize.html', Constants.TIKAL_SIZE);">Tikal Size</button>
+		    <button type="button" class="btn btn-default" onclick="LoadUtil.loadJSONResp('department/baseShell.html', Constants.BASE_SHELL);">Base Shell</button>
+		    <button type="button" class="btn btn-active">Sheet Cutting</button>
+		 </div>
+    </div>
+    <!-- <button class="btn btn-primary" onclick="DepartmentUtil.submitDepartment()" id="submitBS">Submit</button> -->
+    <button type="button" class="btn btn-info" onclick="MasterUtil.fetchRowData(this, 1001);">Defaults</button>
+    <button class="btn btn-info" onclick="LoadUtil.getPrintData(this)" id='printSheetCutting'>Print</button>
+    <!-- <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button> -->
+    <hr>
+    <div>
+    	<label for="from">From : </label>
+		<input type="text" id="fromEl" name="from">
+		<label for="to">To : </label>
+		<input type="text" id="toEl" name="to">
+		<button class="btn btn-warning" onclick="GeneralUtil.resetDateRange(true)">Reset Date</button>
+		<button class="button btn-default glyphicon glyphicon-refresh" aria-hidden="true" elname="refresh" onclick="LoadUtil.refreshView();" style="margin-left: 5px;"></button>
+	</div>
+	<br>
+    <div>
+    	<table class="table table-hover table-bordered" id="sheetCutting">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">Order ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Length</th>
+	                <th>Circum</th>
+	                <th>Pieces</th>
+	                <th>Sheet Thickness</th>
+	                <th>Number of Rings</th>
+	                <th>Ring Size</th>
+	                <th>Sheet Length</th>
+	                <th>Sheet Breadth</th>
+	                <th class="">Remarks</th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="sheetCuttingRow" class="verticalCenter" style="display: none;" keep='true'>
+	            	<td elname="scJsId" style="text-align: center"></td>
+	                <td elname="scdate" date="date"></td>
+	                <td elname="scPname"></td>
+	                <td elname="sclen"></td>
+	                <td elname="scCyCircum"></td>
+	                <td elname="scPieces"></td>
+	                <td elname="scThickness"></td>
+	                <td elname="scNoOfRings"></td>
+	                <td elname="scRingSize"></td>
+	                <td elname="scLength"></td>
+	                <td elname="scBreadth"></td>
+	                <td elname="scRemarks" ignoreEl="true"></td>
+	            </tr>
+	        </tbody>
+    	</table>
+    	<div id="sheetCuttingDefault" style="display: none;" title="Sheet Cutting Defaults">
+    		<table class="table table-bordered">
+    			<tr>
+	                <td>Ring Size</td>
+	                <td><input type="number" elname="scRingSize" class="form-control" required></td>
+	            </tr>
+	            <tr>
+	                <td>Sheet Breadth</td>
+	                <td><input type="number" class="form-control" placeholder="Breadth" elname="scSheetBr" required></td>
+	            </tr>
+	            <tr>
+	                <td>Sheet Length</td>
+	                <td><input type="number" class="form-control" placeholder="Length" elname="scSheetLen" required></td>
+	            </tr>
+	            <tr>
+	                <td>Sheet Thickness</td>
+	                <td><input type="number" class="form-control" placeholder="Thickness" elname="scSheetThick" required></td>
+	            </tr>
+    		</table>
+    	</div>
+    </div>
+    <div id="print" style="display: none;">
+    	<h3 elname='printTitle' class="text-center"></h3>
+    	<div class="row" style="display: none; margin-left: 15px;">
+    		<strong class="text-left">From : </strong>
+    		<span elname="dateFrom"></span>
+    		<strong class="text-right"> To : </strong>
+    		<span elname="dateTo"></span>
+    	</div>
+    	<table class="table table-bordered table-condensed">
+    		<thead>
+    			<tr>
+    				    				<!-- <th>Job ID</th> -->
+    				<th style="width : 8%;">Date</th>
+	                <th style="width : 14%;">Party Name</th>
+	                <th>Length</th>
+	                <th>Circum</th>
+	                <th>Pieces</th>
+	                <th>Thickness</th>
+	                <th class="col-md-1">No. Rings</th>
+	                <th>Ring Size</th>
+	                <th>Length</th>
+	                <th>Breadth</th>
+	                <th>Remarks</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr elname='printRow' style="display: none;">
+    				<td elname="scdate" date="date"></td>
+	                <td elname="scPname"></td>
+	                <td elname="sclen"></td>
+	                <td elname="scCyCircum"></td>
+	                <td elname="scPieces"></td>
+	                <td elname="scThickness"></td>
+	                <td elname="scNoOfRings"></td>
+	                <td elname="scRingSize"></td>
+	                <td elname="scLength"></td>
+	                <td elname="scBreadth"></td>
+	                <td elname="scRemarks" ignoreEl="true"></td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </div>
+</div>
