@@ -1,0 +1,202 @@
+<div id="container" class="jobsheet">
+	<div class="text-center">
+        <h3>Job Sheet</h3>
+    </div>
+    <br>
+    <div class="row">
+        <table class="table table-hover table-bordered table-condensed">
+            <thead>
+                <tr>
+                	<th style="width: 7%;">ID</th>
+                    <th>Date</th>
+                    <th>Delivery Days</th>
+                    <th>Party</th>
+                    <th>Name of Job</th>
+                    <th>Material Printed</th>
+                    <th>Type of Printing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                	<td><input type="text" elname="jsid" class="form-control" disabled></td>
+                    <td><input type="text" class="form-control" placeholder="Date" elname='jsDate' id="datePicker" date="date" required></td>
+                    <td><input type='number' value="7" class='form-control' elname='deliveryDays' required/></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Party Name" elname='partyName' ac='8' onfocus="AutoCompleteUtil.loadData(this, null, Array('jsProcessRow', 'jsLessRow'));" required></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Job Name" elname='jobName' required></td>
+                    <td><input type="text" class="form-control" placeholder="Enter Material" elname='materialName' ac='3' onfocus="AutoCompleteUtil.loadData(this);" required></td>
+                    <td><input type="text" class="form-control" placeholder="Type of Printing" ac='7' elname='tomName' onfocus="AutoCompleteUtil.loadData(this);" required></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row" elname="processColorLessTables">
+        <table class="table table-hover table-bordered table-condensed table-inline">
+            <thead>
+            	<tr>
+	                <th>Process Name</th>
+	                <th colspan="2">Quantity</th>	           
+            	</tr>
+            </thead>
+            <tbody>
+            	<tr id="jsProcessRow" elname="jsProcessRow" style="display: none;" keep="true">
+	                <td>
+	                	<input type="text" class="form-control" elname='processName' placeholder="Enter Process" ac='1' onfocus="AutoCompleteUtil.loadData(this);" setRequired="true">
+	                </td>
+	                <td>
+	                    <input type="number" min="0" class="form-control" elname='processQuantity' placeholder="Enter Quantity" onfocusout="JobSheetUtil.printCylSize();">
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="JobSheetUtil.deleteProcessEl(this);">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+            	</tr>
+	            <tr elname="jsProcessRow">
+	                <td>
+	                	<input type="text" class="form-control" elname='processName' placeholder="Enter Process" ac='1' onfocus="AutoCompleteUtil.loadData(this);" required>
+	                </td>
+	                <td>
+	                    <input type="number" min="0" class="form-control" elname='processQuantity' placeholder="Enter Quantity" onfocusout="JobSheetUtil.printCylSize();" required>
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="JobSheetUtil.deleteProcessEl(this);">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+	            </tr>
+	            <tr onclick="GeneralUtil.addNewRow('jsProcessRow', this);" keep="true" elname="addjsProcessRow">
+	            	<td colspan="3">+ Add Process Row</td>
+	            </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-bordered table-condensed table-inline">
+            <thead>
+            	<tr>
+                	<th colspan="3">Colors</th>            
+            	</tr>
+            </thead>
+            <tbody>
+            	<tr id="jsColorRow" elname="jsColorRow" style="display: none;" keep="true">
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Color" elname='colorName' ac='2' onfocus="AutoCompleteUtil.loadData(this);">
+	                </td>
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Color" elname='colorName' ac='2' onfocus="AutoCompleteUtil.loadData(this);">
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="GeneralUtil.deleteEl(this, 'jsColorRow');">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+	            </tr>
+	            <tr elname="jsColorRow">
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Color" elname='colorName' ac='2' onfocus="AutoCompleteUtil.loadData(this);" required>
+	                </td>
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Color" elname='colorName' ac='2' onfocus="AutoCompleteUtil.loadData(this);" required>
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="GeneralUtil.deleteEl(this, 'jsColorRow');">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+	            </tr>
+	            <tr onclick="GeneralUtil.addNewRow('jsColorRow', this);" keep="true" elname="jsAddNewColor">
+	            	<td colspan="3">+ Add Color Row</td>
+	            </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-bordered table-condensed table-inline">
+            <thead>
+            	<tr>
+	                <th>Less</th>
+	                <th colspan="2">Pieces</th>
+	            </tr>
+            </thead>
+            <tbody>
+            	<tr id="jsLessRow" elname="jsLessRow" style="display: none;" keep="true">
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Less" elname='lessName' ac='4' onfocus="AutoCompleteUtil.loadData(this);">
+	                </td>
+	                <td>
+	                    <input type="number" min='0' class="form-control" elname='lessPieces' placeholder="Enter Pieces">
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="GeneralUtil.deleteEl(this, 'jsLessRow');">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+	            </tr>
+	            <tr elname="jsLessRow">
+	                <td>
+	                    <input type="text" class="form-control" placeholder="Enter Less" elname='lessName' ac='4' onfocus="AutoCompleteUtil.loadData(this);">
+	                </td>
+	                <td>
+	                    <input type="number" min='0' class="form-control" elname='lessPieces' placeholder="Enter Pieces">
+	                </td>
+	                <td>
+	                	<button type="button" class="btn btn-default" onclick="GeneralUtil.deleteEl(this, 'jsLessRow');">
+						  <span class="glyphicon glyphicon-trash"></span>
+						</button>
+	                </td>
+	            </tr>
+	            <tr onclick="GeneralUtil.addNewRow('jsLessRow', this);" keep="true" elname="addjsLessRow">
+	            	<td colspan="3">+ Add Less Row</td>
+	            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="table-inline">
+        <div class="row verticalCenter">
+            <div class="col-md-2"><strong>Printing Width :</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" elname='jsPrintWid' required></div>
+            <div class="col-md-1 oneWidth"><strong>X</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" elname='jsPrintWidNum' onfocusout="JobSheetUtil.autoCalcData(this, ['jsPrintWid','jsPrintWidNum'], ['jsPrintWidTotal'], Constants.MUL);" required></div>
+            <div class="col-md-1 oneWidth"><strong>=</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" elname='jsPrintWidTotal' value="0.00" readonly></div>
+            <div class="col-md-1 oneWidth"><strong>+</strong></div>
+            <div class="col-md-2 form-group"><input type="number" step="0.01" elname='jsPrintWidTotalPrec' value="0.00" class="form-control" onfocusout="JobSheetUtil.autoCalcData(this, ['jsPrintWidTotal','jsPrintWidTotalPrec'], ['jsCylinderWid'], Constants.ADD);" required></div>
+        </div>
+        <div class="row verticalCenter">
+            <div class="col-md-2"><strong>Cylinder Width :</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" elname='jsCylinderWid' value="0.00" readonly></div>
+            <div class="col-md-1 oneWidth"><strong>M.M</strong></div>
+        </div>
+        <div class="row verticalCenter">
+            <div class="col-md-2"><strong>Cylinder Circum :</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" elname='jsCylCircum' required></div>
+            <div class="col-md-1 oneWidth"><strong>X</strong></div>
+            <div class="col-md-2 form-group"><input type="number" class="form-control" min="0" value="0" elname='jsCylCircumNum' onfocusout="JobSheetUtil.autoCalcData(this, ['jsCylCircum','jsCylCircumNum'], ['jsCylCircumTotal'], Constants.MUL, true);" required></div>
+            <div class="col-md-1 oneWidth"><strong>=</strong></div>
+            <div class="col-md-2 form-group"><input type="number" step="0.01" class="form-control" elname='jsCylCircumTotal' value="0.00" readonly></div>
+            <div class="col-md-1 oneWidth"><strong>M.M.</strong></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2" style="margin-top: 10px; text-align: right;"><strong>Cylinder Size :</strong></div>
+            <div class="col-md-3 alert alert-info" style="text-align: center;"><strong elname='jsCylinderSize'>0 X 0 X 0</strong></div>
+            <div class="col-md-2" style="margin-top: 10px; text-align: right;"><strong>Bore Details :</strong></div>
+            <div class="col-md-3 alert alert-info" style="text-align: center;"><strong elname='jsBoreDetails'>0 X 0 X 0</strong></div>
+        </div>
+    </div>
+    <div class="table-inline" style="vertical-align: middle;">
+    <textarea class="form-control" rows="5" placeholder="Remarks"></textarea>
+    <br>
+    <div class="col-md-4">
+        <label class="checkbox-inline">
+            <input type="checkbox" elname='jsCleared'> Cleared
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" elname='jsCompleted'> Complete JobSheet
+        </label>
+    </div>
+    </div>
+    <hr>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary" onclick="JobSheetUtil.submitJobSheet();">Submit</button>
+        <!-- <button type="submit" class="btn btn-danger" onclick="LoadUtil.loadHtmlFile('addJobSheet.html', true);">Reset</button> -->
+        <button type="submit" class="btn btn-warning" onclick="LoadUtil.loadJSONResp('jobsheet.html', Constants.JOBSHEET);">View All</button>
+    </div>
+</div>

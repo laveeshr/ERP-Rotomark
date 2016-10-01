@@ -1,0 +1,230 @@
+<div id="container" class="jobsheet" masterType="9">
+	<script>
+		GeneralUtil.setDateRange(document.getElementById('fromEl'), document.getElementById('toEl'));
+	</script>
+	<div class="text-center" style="margin: 15px 0px 15px 0px;">
+	    <div class="btn-group">
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.NONPENDING_LOCAL, this);">Non-Pending Local</button>
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.NONPENDING_OUTSTATION, this);">Non-Pending Outstation</button>
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.NONPENDING_ALL, this);">Non-Pending All</button>
+			    <button type="button" class="btn btn-active" onclick="JobSheetUtil.loadRequiredData(Constants.JOBSHEET, this);">All Jobs</button>
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.PENDING_ALL, this);">Pending All</button>
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.PENDING_LOCAL, this);">Pending Local</button>
+			    <button type="button" class="btn btn-default" onclick="JobSheetUtil.loadRequiredData(Constants.PENDING_OUTSTATION, this);">Pending Outstation</button>
+		</div>
+	</div>
+    <button class="btn btn-primary" onclick="JobSheetUtil.addJobSheet(Constants.JOBSHEET);">Add Job</button>
+    <button class="btn btn-danger" onclick="MasterUtil.deleteMasterRows()" id="delete">Delete</button>
+    <button class="btn btn-info" onclick="LoadUtil.getPrintData(this)" id='printParty' subtype="1">Print Party Wise</button>
+    <button class="btn btn-info" onclick="LoadUtil.getPrintData(this)" id='printDateWise' subtype="2">Print Date Wise</button>
+    <button class="btn btn-info" onclick="LoadUtil.getPrintData(this)" id='printChallanWise' elname='printChallanWise' subtype="3" style="display : none;">Print Challan-Date Wise</button>
+    <button class="btn btn-warning" onclick="JobSheetUtil.separateData(true)" elname='dataSeparation' style="display : none;">Separate Data</button>
+    <!-- <label>
+    	<input type='file' class="form-control btn btn-success" onchange="JobSheetUtil.separateData(false, this)" placeholder="Merge Data" style="display : none;" elname='dataMerging'><!-- Merge Data 
+    </label> -->
+    <button class="btn btn-success" onclick="JobSheetUtil.separateData(false, this)" elname='dataMerging' style="display : none;">Merge Data</button>
+    
+    <hr>
+    <div>
+    	<div>
+	    	<label for="from">From : </label>
+			<input type="text" id="fromEl" name="from">
+			<label for="to">To : </label>
+			<input type="text" id="toEl" name="to">
+			<button class="btn btn-warning" onclick="GeneralUtil.resetDateRange(true)">Reset Date</button>
+			<button class="button btn-default glyphicon glyphicon-refresh" aria-hidden="true" elname="refresh" onclick="LoadUtil.refreshView();" style="margin-left: 5px;"></button>
+		</div>
+		<br>
+    	<table class="table table-hover table-bordered" id="jobSheetTable" style="height: 100%; table-layout: fixed;">
+	        <thead>
+	            <tr>
+	                <th style="width: 10%;">Job ID</th>
+	                <th>Date</th>
+	                <th>Party Name</th>
+	                <th>Job Name</th>
+	                <th>Cylinder Width</th>
+	                <th>Cylinder Circum</th>
+	                <th>Quantity</th>
+	                <th>Bore Details</th>
+	                <th elname='trackHead'>Track Job</th>
+	                <th><button class="btn btn-danger" onclick="GeneralUtil.checkAll(this, 'table');" checked='false'>Delete All</button></th>
+	            </tr>
+	        </thead>
+	        <tbody style="max-height: 60%; overflow: auto;">
+	            <tr id="jobSheetRow" style="display: none;" keep='true'>
+	                <td elname="jsid"  onclick="MasterUtil.fetchRowData(this);" style="cursor: pointer;color : #428bca;text-align: center"></td>
+	                <td elname="jsdate" date="date"></td>
+	                <td elname="jsPname"></td>
+	                <td elname="jsname"></td>
+	                <td elname="jsCyWidth"></td>
+	                <td elname="jsCyCircum"></td>
+	                <td elname="jsQuantity"></td>
+	                <td elname="jsBore"></td>
+	                <td class="align-center">
+						  <button class="glyphicon glyphicon-search" aria-hidden="true" elname="trackJob" onclick="MasterUtil.fetchRowData(this, null, true);"></button>
+						</td>
+	                <td><input type="checkbox" class="form-control" elname="deleteRow" style="height: 15px;width: 15px; "></td>
+	            </tr>
+	        </tbody>
+    	</table>
+	    <div id="jobTrack" style="display: none;" title="Track Job">
+	        <table class="table table-bordered">
+	            <tr>
+	                <td>ID</td>
+	                <td><input type="text" elname="jsid" class="form-control" disabled></td>
+	            </tr>
+	         </table>
+	      	<table class="table table-bordered">
+	      		<tr>
+	      			<th>Location</th>
+	      			<th>Quantity</th>
+	      		</tr>
+	      		<tr elname='jobTrackRow' style="display: none;">
+	      			<td stateType="true"></td>
+	      			<td></td>
+	      		</tr>
+	      	</table>
+	    </div>
+    </div>
+    <div id="print" style="display: none;">
+    	<h3 elname='printTitle' class="text-center"></h3>
+    	<div class="row" style="display: none; margin-left: 15px;">
+    		<strong class="text-left">From : </strong>
+    		<span elname="dateFrom"></span>
+    		<strong class="text-right"> To : </strong>
+    		<span elname="dateTo"></span>
+    	</div>
+    	<table class="table table-bordered table-condensed">
+    		<thead>
+    			<tr>
+    				    				<!-- <th>Job ID</th> -->
+    				<th style="width : 8%;">Date</th>
+    				<th style="width : 8%;">D. Date</th>
+    				<th style="width : 8%;">C. Date</th>
+    				<th style="width : 16%;">Party Name</th>
+    				<th style="width : 16%;">Job Name</th>
+    				<th>Inch</th>
+    				<th style="width : 16%;">Size</th>
+    				<th>Qnty</th>
+    				<th>Remarks</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr elname='printRow' style="display: none;">
+    				<td ignoreEl="true" style="display: none;"></td>
+    				<td date="date"></td>
+    				<td date="date"></td>
+    				<td date="date"></td>
+    				<td></td>
+    				<td></td>
+    				<td></td>
+    				<td></td>
+    				<td></td>
+    				<td></td>
+    			</tr>
+    			<tr elname='summaryRow' class="boldRow" style="display: none; background-color: #9f9f9f !important">
+    				<td colspan="4">
+    					<span>Party Name : </span>
+    					<span elname='pName'></span>
+    				</td>
+    				<td colspan="3">
+    					<span>Total Sq Inch : </span>
+    					<span elname="totalSqInch" class="text-right"></span>
+    				</td>
+    				<td colspan="2">
+    					<span>Total Quantity : </span>
+    					<span elname="totalQuant" class="text-right"></span>
+    				</td>
+    			</tr>
+    			<tr elname='grandSummaryRow' class="boldRow underlineRow">
+    				<td colspan="5">
+    					<span>Grand Total Sq Inch : </span>
+    					<span elname='gtSqInch' class="text-right"></span>
+    				</td>
+    				<td colspan="4">
+    					<span>Grand Total Quantity : </span>
+    					<span elname="gtQuant" class="text-right"></span>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </div>
+    <div id='printChallanRequirements' style="display: none;">
+    	<table class="table table-bordered">
+    		<tr>
+    			<td>Date</td>
+    			<td><input type="text" class="form-control" placeholder="Date" elname='jsDate' date="date" required></td>
+    		</tr>
+    		<tr>
+    			<td>Bill Type</td>
+    			<td>
+                    <div class="radio-inline">
+                        <label><input type="radio" class="form-control" elname="billType" value="1" required checked="checked" style="height: 13px; width: 13px;">With Amount</label>
+                    </div>
+                    <div class="radio-inline">
+                        <label><input type="radio" elname="billType" class="form-control" value="0" required style="height: 13px; width: 13px;">Without Amount</label>
+                    </div>
+                </td>
+    		</tr>
+    	</table>
+    </div>
+    <div id='printChallan' class="challan" style="width: 100%; display: none;">
+		<strong class="text-center" style="text-decoration: underline;">
+			Challan
+		</strong>
+		<div class="row" style='margin : 5px; padding : 5px; '>
+			<div style="float: right; height : 20px;">
+				<strong class="text-left">Date : </strong>
+				<span style="margin-left : 10px;" elname='date'></span>
+			</div>
+			<div style="display : none; float: left; height : 20px;">
+				<strong class="text-left">Job ID : </strong>
+				<span style="margin-right : 10px;" elname='jobId'></span>
+			</div>
+		</div>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>M/s : </strong>
+					<span class='pull-right' elname='partyName'></span>
+				</div>
+				<div class="panel-heading">
+					<strong>Job Name : </strong>
+					<span class='pull-right' elname='jobName'></span>
+				</div>
+				<div class="panel-body">
+					<strong>Size : </strong>
+					<span class='pull-right' elname='cySize'></span>
+				</div>
+				<div class="table table-bordered table-condensed" style="width : 100%; display : table; height : 750px;">
+					<div class="table-row boldRow" style="height : 30px;">
+						<div class='table-cell text-center'>Particulars</div>
+						<div class='table-cell text-center'>Quantity</div>
+						<div class='table-cell text-center'>Rate</div>
+						<div class='table-cell text-center'>Amount</div>
+					</div>
+					<div class="table-row" elname='challanRow' style='display: none !important;'>
+						<div class='table-cell text-center' elname='procName'></div>
+						<div class='table-cell text-center' elname='procQuant'></div>
+						<div class='table-cell text-center' elname='procRate'></div>
+						<div class='table-cell text-center' elname='totalRate'></div>
+					</div>
+					<div class="table-row boldRow" elname='summaryRow' style="height : 30px;">
+						<div class='table-cell text-center'>Total</div>
+						<div class='table-cell text-center' elname='procQuant'></div>
+						<div class='table-cell text-center'></div>
+						<div class='table-cell text-center' elname='totalRate'></div>
+					</div>
+				</div>
+				<div class="panel-body" style="border-bottom: 1px solid black;">
+					<strong>Colors : </strong>
+					<span class='pull-right' elname='challanColors'></span>
+				</div>
+				<div class="panel-footer">
+					<strong>Remarks : </strong>
+					<span class="pull-right" elname='challanRemarks'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

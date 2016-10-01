@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <title>Login</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body style="background-color: rgb(26,50,55);">
+    	<!-- script references -->
+		<script src="js/jquery/jquery-2.2.3.js"></script>
+		<script src="js/jquery/jquery-ui.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <script src="js/departmentUtil.js"></script>
+        <script src="js/Constants.js"></script>
+		<script src="js/MasterUtil.js"></script>
+		<script src="js/ValidateUtil.js"></script>
+		<script src="js/GeneralUtil.js"></script>
+		<script src="js/LoadUtil.js"></script>
+		<script>
+    		//DepartmentUtil.checkIPStatus();
+    	</script>
+        <div style="margin-top: 15%; background-color: #d3dee0; padding: 3em;">
+	        <form>
+	            <div class="form-group" style="margin-left: 34.75%">
+	                <div class="input-group">
+	                	<span class="input-group-addon">Username</span>
+	                    <input type="text" elname="username" name="username" class="form-control" placeholder="Enter Username" style="width: 30%" required>
+	                </div>
+	            </div>
+	            <div class="form-group" style="margin-left: 35%">
+	                <div class="input-group">
+	                <span class="input-group-addon">Password</span>
+	                    <input type="password" elname='password' name="password" class="form-control" placeholder="Enter Password" style="width: 30%" required>
+	            	</div>
+	            </div>
+	        </form>
+	        <button class="btn btn-primary" style="margin-left: 45%;" onclick="DepartmentUtil.login(this);">Submit</button>
+        </div>
+    </body>
+</html>

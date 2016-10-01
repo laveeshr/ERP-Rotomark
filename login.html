@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>SPLR</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" media="all">
+                <link href="css/jobsheet.css" rel="stylesheet" media="all">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet" media="all">
+		<link rel="stylesheet" href="js/jquery/jquery-ui.min.css" media="all">
+	</head>
+	<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<!-- Script References -->
+	<script src="js/jquery/jquery-2.2.3.js"></script>
+	<script src="js/jquery/jquery-ui.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/departmentUtil.js"></script>
+	<script src="js/Constants.js"></script>
+	<script src="js/LoadUtil.js"></script>
+	<script>
+		DepartmentUtil.setPermissions();
+	</script>
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" rel="home" href="#" onclick="LoadUtil.loadHtmlFile('home.html');">SPLR</a>
+	</div>
+	
+	<div class="collapse navbar-collapse">
+		
+		<ul class="nav navbar-nav">
+            <li class="noPerm" type="9"><a href="#" onclick="LoadUtil.loadJSONResp('jobsheet.html', Constants.JOBSHEET);">Jobsheet</a></li>
+			<li class="dropdown noPerm">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Depatments <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li class="noPerm" type="10"><a href="#" onclick="LoadUtil.loadJSONResp('department/baseShell.html', Constants.BASE_SHELL);">Base Shell</a></li>
+				  <li class="noPerm" type="11"><a href="#" onclick="LoadUtil.loadJSONResp('department/roughTurning.html', Constants.ROUGH_TURNING);">Rough Turning</a></li>
+				  <li class="noPerm" type="12"><a href="#" onclick="LoadUtil.loadJSONResp('department/finalGrinding.html', Constants.FINAL_GRINDING);">Final Grinding</a></li>
+				  <li class="noPerm" type="13"><a href="#" onclick="LoadUtil.loadJSONResp('department/copperPlating.html', Constants.COPPER_PLATING);">Copper Plating</a></li>
+				  <li class="noPerm" type="14"><a href="#" onclick="LoadUtil.loadJSONResp('department/copperCut.html', Constants.COPPER_CUT);">Copper Cut</a></li>
+				  <li class="noPerm" type="15"><a href="#" onclick="LoadUtil.loadJSONResp('department/copperPolish.html', Constants.COPPER_POLISH);">Copper Polish</a></li>
+				  <li class="noPerm" type="16"><a href="#" onclick="LoadUtil.loadJSONResp('department/engraving.html', Constants.ENGRAVING);">Engraving</a></li>
+				  <li class="noPerm" type="17"><a href="#" onclick="LoadUtil.loadJSONResp('department/chromePlating.html', Constants.CHROME_PLATING);">Chrome Plating</a></li>
+				  <li class="noPerm" type="18"><a href="#" onclick="LoadUtil.loadJSONResp('department/chromePolish.html', Constants.CHROME_POLISH);">Chrome Polish</a></li>
+				  <li class="noPerm" type="19"><a href="#" onclick="LoadUtil.loadJSONResp('department/proofing.html', Constants.PROOFING);">Proofing</a></li>
+				  <li class="noPerm" type="20"><a href="#" onclick="LoadUtil.loadJSONResp('department/dispatch.html', Constants.DISPATCH);">Dispatch</a></li>
+				</ul>
+			</li>
+			<li class="dropdown noPerm" type="25">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Masters <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/partyMaster.html', Constants.PARTYMASTER);">Party Master</a></li>
+				  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/processMaster.html', Constants.PROCESSMASTER);">Process Master</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/colorMaster.html', Constants.COLORMASTER);">Color Master</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/materialMaster.html', Constants.MATERIALMASTER);">Material Master</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/lessMaster.html', Constants.LESSMASTER);">Less Master</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/operatorMaster.html', Constants.OPMASTER);">Operator Master</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/spareCylinder.html', Constants.SPARECYLINDER);">Spare Cylinders</a></li>
+                  <li><a href="#" onclick="LoadUtil.loadJSONResp('masters/typeOfMaterial.html', Constants.TOMMASTER);">Type of Material Master</a></li>
+				</ul>
+			</li>
+			<li class="noPerm">
+				<a href="#" onclick="LoadUtil.loadJSONResp('department/adminPage.html', Constants.ADMIN);">Admin Page</a>
+			</li>
+			<li>
+				<a href="#" onclick="window.location.href='php/logout.php';">Logout</a>
+			</li>
+		</ul>
+		<!--<button type="button" class="btn btn-default navbar-btn">Button</button>-->
+		<div class="col-sm-3 col-md-3 pull-right">
+			<form class="navbar-form" role="search">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+		
+	</div>
+</div>
+
+
+<div class="container">
+  <div id="container">
+      <br>
+	<div class="text-center jumbotron">
+		<h1>Welcome to SPLR</h1>
+		<p class="lead">Please proceed to your respective department by clicking on the link in the navbar.</p>
+	</div>
+  </div>
+    <div class="alert alert-danger" id="noRow" style="display: none;" role="alert">No Entries yet! Please enter some data!</div>
+  <div id="masterRowMessage" style="display : none;" title="Notice">
+	<p></p>
+	<div class="alert alert-warning" stlye="display : none;">ID : <span elname="idTag"></span></div>
+  </div>
+</div><!-- /.container -->
+<!-- Ajax Loader -->
+<div class="modal"></div>	
+	<!-- script references -->
+		<script src="js/MasterUtil.js"></script>
+		<script src="js/ValidateUtil.js"></script>
+        <script src="js/GeneralUtil.js"></script>
+        <script src="js/AutoComplete.js"></script>
+        <script src="js/JobSheetUtil.js"></script>
+	</body>
+</html>
